@@ -1,0 +1,24 @@
+!!! 5
+%html
+  %head
+    %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+    %script{src: "/js/main.js"}
+    %link{rel: :stylesheet, href: "/css/main.css"}
+  %body
+    #display
+      %span.product-price $0
+      %span.money-inserted $0
+      %span.change-given $0
+    #products
+    #coins
+      %span.coin.pound{"data-coin-value" => 200} &#xa3;2
+      %span.coin.pound{"data-coin-value" => 100} &#xa3;1
+      %span.coin.pence{"data-coin-value" => 50} 50p
+      %span.coin.pence{"data-coin-value" => 20} 20p
+      %span.coin.pence{"data-coin-value" => 10} 10p
+      %span.coin.pence{"data-coin-value" => 5} 5p
+      %span.coin.pence{"data-coin-value" => 2} 2p
+      %span.coin.pence{"data-coin-value" => 1} 1p
+    #buttons
+      %button.buy Buy
+      %button.return-money Cancel and Return Money

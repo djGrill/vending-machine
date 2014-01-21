@@ -1,0 +1,21 @@
+.coin {
+  text-align: center;
+  display: inline-block;
+  font-size: 1em;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  margin-left: 0.4em;
+  border: 1px solid #000;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.2em #000;
+  background-color: #F2B50F;
+  color: #000;
+}
+
+.coin.pence {
+  font-size: 0.8em;
+  width: 2.3em;
+  height: 2.3em;
+  line-height: 2.3em;
+}
