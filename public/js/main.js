@@ -10,6 +10,10 @@ function resetDisplay() {
 }
 
 function resetMachine() {
+  $.post("/reset-machine");
+}
+
+function cancelPurchase() {
   $.post(
     "/reset-machine",
     function(data) {
@@ -117,7 +121,7 @@ $(function() {
 
   $("#cancel").click(function() {
     resetDisplay();
-    resetMachine();
+    cancelPurchase();
   });
 
   $("#reload-products").click(function() {
