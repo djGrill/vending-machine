@@ -10,6 +10,7 @@ machine = VendingMachine.new
 
 get "/" do
   machine.reset_machine
+  @products = machine.products
 
   haml :index
 end

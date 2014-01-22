@@ -1,12 +1,5 @@
-# specify product price in pence
-PRODUCTS = {
-  "Water" => 200,
-  "Apple Juice" => 250,
-  "Manog Juice" => 300
-}
-
-
 class VendingMachine
+  attr_accessor :products
   attr_writer :amount_available
 
   def initialize
@@ -15,6 +8,13 @@ class VendingMachine
 
   def reset_machine
     @amount_available = 0
+
+    # specify product price in pence
+    @products = [
+      {name: "Water", price: 200, available: 1},
+      {name: "Apple Juice", price: 250, available: 2},
+      {name: "Mango Juice", price: 300, available: 3}
+    ]
   end
 
   def amount_available
