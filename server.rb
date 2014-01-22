@@ -14,7 +14,13 @@ get "/" do
 end
 
 
-get "/load-products" do
+get "/get-products" do
+  machine.products.to_json
+end
+
+
+post "/reload-products" do
+  machine.reload_products
   machine.products.to_json
 end
 

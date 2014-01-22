@@ -15,14 +15,12 @@ function resetMachine() {
   );
 }
 
-
-$(function() {
-  resetDisplay();
-
+function getProducts() {
   $.get(
-    "/load-products",
+    "/get-products",
     function(data) {
       var $products = $("#products");
+      $products.html("");
 
       for (index in data) {
         var product = data[index];
@@ -42,7 +40,12 @@ $(function() {
     },
     "json"
   );
+}
 
+
+$(function() {
+  resetDisplay();
+  getProducts();
 
   $(document).on("click", ".product", function() {
     var $this = $(this);
@@ -108,8 +111,18 @@ $(function() {
     );
   });
 
-  $("#return-money").click(function() {
+  $("#cancel").click(function() {
     resetDisplay();
     resetMachine();
+  });
+
+  $("#reload-products").click(function() {
+    $.post(
+      "/reload-products",
+      function(data) {
+        getProducts();
+      },
+      "json"
+    );
   });
 });

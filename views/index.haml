@@ -5,8 +5,8 @@
     %script{src: "/js/main.js"}
     %link{rel: :stylesheet, href: "/css/main.css"}
   %body
+    %h2 Display
     #display
-      %h2 Display
       %p
         Product selected:
         %span.product-name
@@ -16,10 +16,12 @@
       %p
         Money inserted:
         %span.money-inserted
+
+    %h2 Select Product
     #products
-      %h2 Select Product
+
+    %h2 Insert Coins
     #coins
-      %h2 Insert Coins
       %span.coin.pound{"data-coin-value" => 2} &#xa3;2
       %span.coin.pound{"data-coin-value" => 1} &#xa3;1
       %span.coin.pence{"data-coin-value" => 0.50} 50p
@@ -28,6 +30,8 @@
       %span.coin.pence{"data-coin-value" => 0.05} 5p
       %span.coin.pence{"data-coin-value" => 0.02} 2p
       %span.coin.pence{"data-coin-value" => 0.01} 1p
+
     #buttons
       %button#buy Buy
-      %button#return-money Cancel and Return Money
+      %button#cancel Cancel
+      %button#reload-products Reload Products

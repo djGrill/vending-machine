@@ -4,18 +4,21 @@ class VendingMachine
 
   def initialize
     reset_machine
+    reload_products
+  end
 
+  def reset_machine
+    @money_inserted = 0
+    @product_selected_index = -1
+  end
+
+  def reload_products
     # specify product price in pound.pence
     @products = [
       {name: "Water", price: 2.00, available: 1},
       {name: "Apple Juice", price: 2.50, available: 2},
       {name: "Mango Juice", price: 3.00, available: 3}
     ]
-  end
-
-  def reset_machine
-    @money_inserted = 0
-    @product_selected_index = -1
   end
 
   def money_inserted
