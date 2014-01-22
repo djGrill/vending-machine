@@ -4,6 +4,7 @@ GEM
     backports (3.4.0)
     haml (4.0.4)
       tilt
+    json (1.8.1)
     multi_json (1.8.4)
     rack (1.5.2)
     rack-protection (1.5.2)
@@ -28,5 +29,6 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  json
   sinatra
   sinatra-contrib
