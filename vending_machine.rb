@@ -4,10 +4,6 @@ class VendingMachine
 
   def initialize
     reset_machine
-  end
-
-  def reset_machine
-    @money_inserted = 0
 
     # specify product price in pound.pence
     @products = [
@@ -15,6 +11,10 @@ class VendingMachine
       {name: "Apple Juice", price: 2.50, available: 2},
       {name: "Mango Juice", price: 3.00, available: 3}
     ]
+  end
+
+  def reset_machine
+    @money_inserted = 0
   end
 
   def money_inserted

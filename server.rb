@@ -19,6 +19,11 @@ get "/load-products" do
 end
 
 
+post "/reset-machine" do
+  machine.reset_machine
+end
+
+
 post "/update-money" do
   content_type :json
 

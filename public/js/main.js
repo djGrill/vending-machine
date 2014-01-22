@@ -2,7 +2,23 @@ function getCurrencyValue(number) {
   return("£" + parseFloat(Math.round(number * 100) / 100).toFixed(2));
 }
 
+function resetDisplay() {
+  var $display = $("#display");
+  $display.find(".product-name").html("None");
+  $display.find(".product-price").html(getCurrencyValue(0));
+  $display.find(".money-inserted").html(getCurrencyValue(0));
+}
+
+function resetMachine() {
+  $.post(
+    "/reset-machine"
+  );
+}
+
+
 $(function() {
+  resetDisplay();
+
   $.get(
     "/load-products",
     function(data) {
@@ -88,5 +104,10 @@ $(function() {
       },
       "json"
     );
+  });
+
+  $("#return-money").click(function() {
+    resetDisplay();
+    resetMachine();
   });
 });
