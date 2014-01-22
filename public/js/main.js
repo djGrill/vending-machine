@@ -1,3 +1,7 @@
+function getCurrencyValue(number) {
+  return("£" + parseFloat(Math.round(number * 100) / 100).toFixed(2));
+}
+
 $(function() {
   $(".product").click(function() {
     var $this = $(this);
@@ -11,7 +15,7 @@ $(function() {
       function(data) {
         if (data.status == "OK") {
           $("#display .product-name").html(data.productName);
-          $("#display .product-price").html("&#xa3;" + data.productPrice);
+          $("#display .product-price").html(getCurrencyValue(data.productPrice));
         } else {
           alert(data.message);
         }
@@ -51,8 +55,8 @@ $(function() {
           // # update the amount of available units of this product
           $(".product .available .value:eq(" + productSelectedIndex + ")").html(productSelectedAvailable);
 
-          $("#display .money-inserted").html("&#xa3;0");
-          alert("Enjoy your " + productName + ". You get a change of £" + Math.round(change * 100) / 100)
+          $("#display .money-inserted").html("&#xa3;0.00");
+          alert("Enjoy your " + productName + ". You get a change of " + getCurrencyValue(change));
         } else {
           alert(data.message);
         }

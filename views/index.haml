@@ -6,16 +6,18 @@
     %link{rel: :stylesheet, href: "/css/main.css"}
   %body
     #display
+      %h2 Display
       %p
         Product selected:
-        %span.product-name
+        %span.product-name None
       %p
         Price:
-        %span.product-price &#xa3;0
+        %span.product-price &#xa3;0.00
       %p
         Money inserted:
-        %span.money-inserted &#xa3;0
+        %span.money-inserted &#xa3;0.00
     #products
+      %h2 Products
       - @products.each_with_index do |product, index|
         .product{"data-product-index" => index}
           .name
@@ -28,6 +30,7 @@
             Available:
             %span.value= product[:available]
     #coins
+      %h2 Coins
       %span.coin.pound{"data-coin-value" => 2} &#xa3;2
       %span.coin.pound{"data-coin-value" => 1} &#xa3;1
       %span.coin.pence{"data-coin-value" => 0.50} 50p

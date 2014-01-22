@@ -1,3 +1,15 @@
+.product {
+  margin: 20px;
+}
+
+#coins {
+  margin: 20px 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
 .coin {
   text-align: center;
   display: inline-block;
