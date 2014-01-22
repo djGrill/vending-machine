@@ -23,10 +23,10 @@
             = product[:name]
           .price
             Price:
-            = product[:price]
+            = "&#xa3;" + product[:price].to_s
           .available
             Available:
-            = product[:available]
+            %span.value= product[:available]
     #coins
       %span.coin.pound{"data-coin-value" => 2} &#xa3;2
       %span.coin.pound{"data-coin-value" => 1} &#xa3;1

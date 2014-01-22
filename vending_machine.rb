@@ -11,7 +11,7 @@ class VendingMachine
 
     # specify product price in pound.pence
     @products = [
-      {name: "Water", price: 2.00, available: 0},
+      {name: "Water", price: 2.00, available: 1},
       {name: "Apple Juice", price: 2.50, available: 2},
       {name: "Mango Juice", price: 3.00, available: 3}
     ]
@@ -53,6 +53,10 @@ class VendingMachine
 
   def release_product
     selected_product[:available] -= 1
+  end
+
+  def update_money_inserted
+    @money_inserted = 0
   end
 
   def get_change

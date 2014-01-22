@@ -43,10 +43,13 @@ $(function() {
       "/buy-selected-product",
       function(data) {
         if (data.status == "OK") {
-          console.log(data);
-
+          var productSelectedIndex = data.productSelectedIndex;
+          var productSelectedAvailable = data.productSelectedAvailable;
           var productName = data.productName;
           var change = data.change;
+
+          // # update the amount of available units of this product
+          $(".product .available .value:eq(" + productSelectedIndex + ")").html(productSelectedAvailable);
 
           $("#display .money-inserted").html("&#xa3;0");
           alert("Enjoy your " + productName + ". You get a change of £" + Math.round(change * 100) / 100)
