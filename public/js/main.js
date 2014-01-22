@@ -11,7 +11,11 @@ function resetDisplay() {
 
 function resetMachine() {
   $.post(
-    "/reset-machine"
+    "/reset-machine",
+    function(data) {
+      alert("You get " + getCurrencyValue(data.moneyReturned) + " back.");
+    },
+    "json"
   );
 }
 

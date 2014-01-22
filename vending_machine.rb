@@ -8,8 +8,11 @@ class VendingMachine
   end
 
   def reset_machine
+    money_returned = @money_inserted
     @money_inserted = 0
     @product_selected_index = -1
+
+    return money_returned
   end
 
   def reload_products

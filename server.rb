@@ -26,7 +26,9 @@ end
 
 
 post "/reset-machine" do
-  machine.reset_machine
+  money_returned = machine.reset_machine
+
+  {moneyReturned: money_returned}.to_json
 end
 
 
