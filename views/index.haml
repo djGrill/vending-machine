@@ -15,9 +15,6 @@
       %p
         Money inserted:
         %span.money-inserted &#xa3;0
-      %p
-        Change:
-        %span.change-given &#xa3;0
     #products
       - @products.each_with_index do |product, index|
         .product{"data-product-index" => index}
@@ -40,5 +37,5 @@
       %span.coin.pence{"data-coin-value" => 0.02} 2p
       %span.coin.pence{"data-coin-value" => 0.01} 1p
     #buttons
-      %button.buy Buy
-      %button.return-money Cancel and Return Money
+      %button#buy Buy
+      %button#return-money Cancel and Return Money
