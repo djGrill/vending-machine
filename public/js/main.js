@@ -96,7 +96,9 @@ $(function() {
           // # update the amount of available units of this product
           $(".product .available .value:eq(" + productSelectedIndex + ")").html(productSelectedAvailable);
 
-          $("#display .money-inserted").html("&#xa3;0.00");
+          resetDisplay();
+          resetMachine();
+
           alert("Enjoy your " + productName + ". You get a change of " + getCurrencyValue(change));
         } else {
           alert(data.message);

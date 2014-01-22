@@ -62,29 +62,36 @@ end
 
 
 post "/buy-selected-product" do
-  if machine.selected_product_is_available
-    if machine.has_enough_money
-      machine.release_product
-      change = machine.get_change
-      machine.update_money_inserted
+  if machine.no_product_selected
+    return {
+      status: "ERROR",
+      message: "Please select a product."
+    }.to_json
+  end
 
-      {
-        status: "OK",
-        productSelectedIndex: machine.product_selected_index,
-        productSelectedAvailable: machine.selected_product[:available],  # get the updated amount of available units of this product
-        productName: machine.selected_product[:name],
-        change: change
-      }.to_json
-    else
-      {
-        status: "ERROR",
-        message: "Insufficient funds. Please insert more coins."
-      }.to_json
-    end
+  if not machine.selected_product_is_available
+    return {
+      status: "ERROR",
+      message: "Product not available."
+    }.to_json
+  end
+
+  if machine.has_enough_money
+    machine.release_product
+    change = machine.get_change
+    machine.update_money_inserted
+
+    {
+      status: "OK",
+      productSelectedIndex: machine.product_selected_index,
+      productSelectedAvailable: machine.selected_product[:available],  # get the updated amount of available units of this product
+      productName: machine.selected_product[:name],
+      change: change
+    }.to_json
   else
     {
       status: "ERROR",
-      message: "Product not available."
+      message: "Insufficient funds. Please insert more coins."
     }.to_json
   end
 end

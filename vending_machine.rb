@@ -15,6 +15,7 @@ class VendingMachine
 
   def reset_machine
     @money_inserted = 0
+    @product_selected_index = -1
   end
 
   def money_inserted
@@ -36,6 +37,10 @@ class VendingMachine
 
   def product_is_available product_index
     @products[product_index][:available] > 0
+  end
+
+  def no_product_selected
+    @product_selected_index == -1
   end
 
   def selected_product_is_available
