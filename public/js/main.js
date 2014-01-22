@@ -3,7 +3,32 @@ function getCurrencyValue(number) {
 }
 
 $(function() {
-  $(".product").click(function() {
+  $.get(
+    "/load-products",
+    function(data) {
+      var $products = $("#products");
+
+      for (index in data) {
+        var product = data[index];
+
+        var $newProduct = $("<div class='product' data-product-index='" + index + "'>");
+        var $newProductName = $("<div class='name'>Name: </div>");
+        var $newProductPrice = $("<div class='price'>Price: </div>");
+        var $newProductAvailable = $("<div class='available'>Available: </div>");
+
+        $newProductName.append(product.name);
+        $newProductPrice.append(getCurrencyValue(product.price));
+        $newProductAvailable.append("<span class='value'>" + product.available + "</span>");
+
+        $newProduct.append($newProductName).append($newProductPrice).append($newProductAvailable);
+        $products.append($newProduct);
+      }
+    },
+    "json"
+  );
+
+
+  $(document).on("click", ".product", function() {
     var $this = $(this);
     var productSelectedIndex = $this.data("product-index");
 

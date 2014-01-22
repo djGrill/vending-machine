@@ -18,17 +18,6 @@
         %span.money-inserted &#xa3;0.00
     #products
       %h2 Products
-      - @products.each_with_index do |product, index|
-        .product{"data-product-index" => index}
-          .name
-            Name:
-            = product[:name]
-          .price
-            Price:
-            = "&#xa3;" + product[:price].to_s
-          .available
-            Available:
-            %span.value= product[:available]
     #coins
       %h2 Coins
       %span.coin.pound{"data-coin-value" => 2} &#xa3;2
