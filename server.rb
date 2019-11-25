@@ -4,48 +4,43 @@ require 'haml'
 require 'json'
 require './vending_machine.rb'
 
-
 machine = VendingMachine.new
 
-
-get "/" do
+get '/' do
   machine.reset_machine
   haml :index
 end
 
-
-get "/get-products" do
+get '/get-products' do
   machine.products.to_json
 end
 
-
-post "/reload-products" do
+post '/reload-products' do
   machine.reload_products
   machine.products.to_json
 end
 
-
-post "/reset-machine" do
+post '/reset-machine' do
   money_returned = machine.reset_machine
 
-  {moneyReturned: money_returned}.to_json
+  {
+    moneyReturned: money_returned
+  }.to_json
 end
 
-
-post "/update-money" do
+post '/update-money' do
   content_type :json
 
   amount = params[:amount].to_f
   machine.update_money(amount)
 
   {
-    status: "OK",
+    status: 'OK',
     money_inserted: machine.money_inserted
   }.to_json
 end
 
-
-post "/select-product" do
+post '/select-product' do
   content_type :json
 
   product_selected_index = params[:product_selected_index].to_i
@@ -55,32 +50,30 @@ post "/select-product" do
     product_selected = machine.products[product_selected_index]
 
     {
-      status: "OK",
+      status: 'OK',
       productName: product_selected[:name],
       productPrice: product_selected[:price]
     }.to_json
   else
     {
-      status: "ERROR",
-      message: "Product not available."
+      status: 'ERROR',
+      message: 'Product not available.'
     }.to_json
   end
-
 end
 
-
-post "/buy-selected-product" do
+post '/buy-selected-product' do
   if machine.no_product_selected
     return {
-      status: "ERROR",
-      message: "Please select a product."
+      status: 'ERROR',
+      message: 'Please select a product.'
     }.to_json
   end
 
   if not machine.selected_product_is_available
     return {
-      status: "ERROR",
-      message: "Product not available."
+      status: 'ERROR',
+      message: 'Product not available.'
     }.to_json
   end
 
@@ -90,7 +83,7 @@ post "/buy-selected-product" do
     machine.update_money_inserted
 
     {
-      status: "OK",
+      status: 'OK',
       productSelectedIndex: machine.product_selected_index,
       productSelectedAvailable: machine.selected_product[:available],  # get the updated amount of available units of this product
       productName: machine.selected_product[:name],
@@ -98,8 +91,8 @@ post "/buy-selected-product" do
     }.to_json
   else
     {
-      status: "ERROR",
-      message: "Insufficient funds. Please insert more coins."
+      status: 'ERROR',
+      message: 'Insufficient funds. Please insert more coins.'
     }.to_json
   end
 end

@@ -18,14 +18,14 @@ class VendingMachine
   def reload_products
     # specify product price in pound.pence
     @products = [
-      {name: "Water", price: 2.00, available: 1},
-      {name: "Apple Juice", price: 2.50, available: 2},
-      {name: "Mango Juice", price: 3.00, available: 3}
+      {name: 'Water', price: 2.00, available: 1},
+      {name: 'Apple Juice', price: 2.50, available: 2},
+      {name: 'Mango Juice', price: 3.00, available: 3}
     ]
   end
 
   def money_inserted
-    sprintf("%.2f", @money_inserted)
+    sprintf('%.2f', @money_inserted)
   end
 
   def update_money amount
@@ -54,9 +54,9 @@ class VendingMachine
   end
 
   def has_enough_money
-    print "@money_inserted: "
+    print '@money_inserted: '
     puts @money_inserted
-    print "selected_product[:price]: "
+    print 'selected_product[:price]: '
     puts selected_product[:price]
 
     @money_inserted >= selected_product[:price]
